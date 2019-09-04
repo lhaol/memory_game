@@ -39,7 +39,7 @@ function gameStart(){
     const fragment = document.createDocumentFragment();
     for (let card of cards){
         fragment.appendChild(card);
-    }
+    };
     deck.appendChild(fragment);
 
     cardListener();
@@ -48,7 +48,7 @@ function gameStart(){
     //ranking star
     //moves
 
-};
+}
 
 
 
@@ -63,8 +63,12 @@ function gameStart(){
  *    + 如果所有卡都匹配，则显示带有最终分数的消息（将这个功能放在你从这个函数中调用的另一个函数中）
  */
 function cardListener(){
-    
-};
+   for (let i = 0; i<cards.length; i++){
+       card = cards[i];
+       card.addEventListerner("click", cardStatus); //open, show, match, unmatch
+       card.addEventListerner("click", cardOpen);
+   }; 
+}
 
 function cardShow(){
 
