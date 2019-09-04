@@ -36,9 +36,11 @@ function gameStart(){
     cards=shuffle(cards);
 
     deck.innerHTML = "";
+    const fragment = document.createDocumentFragment();
     for (let card of cards){
-        deck.appendChild(card);
+        fragment.appendChild(card);
     }
+    deck.appendChild(fragment);
 
     cardListener();
 
