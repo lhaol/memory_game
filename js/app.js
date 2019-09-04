@@ -29,7 +29,7 @@ function shuffle(array) {
  *   - 将每张卡的 HTML 添加到页面
  */
 
-function start(){
+function gameStart(){
     openCards = [];
     moves = 0;
     time = 0;
@@ -39,6 +39,13 @@ function start(){
     for (let card of cards){
         deck.appendChild(card);
     }
+
+    cardListener();
+
+    //add timer
+    //ranking star
+    //moves
+
 };
 
 
@@ -53,3 +60,10 @@ function start(){
  *    + 增加移动计数器并将其显示在页面上（将这个功能放在你从这个函数中调用的另一个函数中）
  *    + 如果所有卡都匹配，则显示带有最终分数的消息（将这个功能放在你从这个函数中调用的另一个函数中）
  */
+function cardListener(){
+    
+};
+
+function cardShow(){
+
+};
