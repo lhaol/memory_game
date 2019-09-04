@@ -1,6 +1,8 @@
 /*
  * 创建一个包含所有卡片的数组
  */
+let card = document.getElementsByClassName("card");
+let cards = [...card];
 
 
 /*
@@ -9,6 +11,7 @@
  *   - 循环遍历每张卡片，创建其 HTML
  *   - 将每张卡的 HTML 添加到页面
  */
+
 
 // 洗牌函数来自于 http://stackoverflow.com/a/2450976
 function shuffle(array) {
