@@ -4,13 +4,7 @@
 let card = document.getElementsByClassName("card");
 let cards = [...card];
 
-
-/*
- * 显示页面上的卡片
- *   - 使用下面提供的 "shuffle" 方法对数组中的卡片进行洗牌
- *   - 循环遍历每张卡片，创建其 HTML
- *   - 将每张卡的 HTML 添加到页面
- */
+let deck = document.getElementsByClassName("deck");
 
 
 // 洗牌函数来自于 http://stackoverflow.com/a/2450976
@@ -27,6 +21,26 @@ function shuffle(array) {
 
     return array;
 }
+
+/*
+ * 显示页面上的卡片
+ *   - 使用下面提供的 "shuffle" 方法对数组中的卡片进行洗牌
+ *   - 循环遍历每张卡片，创建其 HTML
+ *   - 将每张卡的 HTML 添加到页面
+ */
+
+function start(){
+    openCards = [];
+    moves = 0;
+    time = 0;
+    cards=shuffle(cards);
+
+    deck.innerHTML = "";
+    for (let card of cards){
+        deck.appendChild(card);
+    }
+};
+
 
 
 /*
