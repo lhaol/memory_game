@@ -71,5 +71,16 @@ function cardListener(){
 }
 
 function cardClicked(){
-
+    this.classList.add('open', 'show');
+    openCards.push(this);
+    if(moves===0){
+        timer = setInterval (timeit, 1000);
+    }
+    moves+=1;
+    this.removeEventListener("click", cardClicked);
+    cardMatch ();
 };
+
+function cardMatch() {
+    
+}
