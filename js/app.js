@@ -34,6 +34,7 @@ function gameStart(){
     openCards = [];
     moves = 0;
     // time = 0;
+    matched =0
     cards=shuffle(cards);
 
     deck.innerHTML = "";
@@ -78,9 +79,19 @@ function cardClicked(){
     }
     moves+=1;
     this.removeEventListener("click", cardClicked);
-    cardMatch ();
+    cardMatch (); 
 };
 
 function cardMatch() {
-    
+    if (openCards.lengh === 2){
+        if (opencards[0].classList.toString() === openCards[1].classList.toString()){
+            openCrads[0].classList.add("open", "match")
+            openCrads[0].classList.add("open", "match")
+            matched +=1;
+        }
+        else{
+            closeCards();
+        }
+        openCards = [];
+    }
 }
