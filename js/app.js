@@ -1,11 +1,12 @@
 /*
  * 创建一个包含所有卡片的数组
  */
-let card = document.getElementsByClassName("card");
-let cards = [...card];
+let cardList = document.getElementsByClassName("card");
+let cards = [...cardList];
 
-let deck = document.getElementsByClassName("deck");
+let deck = document.querySelector(".deck");
 
+document.body.onload = gameStart();
 
 // 洗牌函数来自于 http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -32,17 +33,18 @@ function shuffle(array) {
 function gameStart(){
     openCards = [];
     moves = 0;
-    time = 0;
+    // time = 0;
     cards=shuffle(cards);
 
     deck.innerHTML = "";
-    const fragment = document.createDocumentFragment();
+    
     for (let card of cards){
-        fragment.appendChild(card);
+        deck.appendChild(card);
+        card.classList.remove("show", "open", "match", "disabled");
     };
-    deck.appendChild(fragment);
 
     cardListener();
+
 
     //add timer
     //ranking star
@@ -63,13 +65,11 @@ function gameStart(){
  *    + 如果所有卡都匹配，则显示带有最终分数的消息（将这个功能放在你从这个函数中调用的另一个函数中）
  */
 function cardListener(){
-   for (let i = 0; i<cards.length; i++){
-       card = cards[i];
-       card.addEventListerner("click", cardStatus); //open, show, match, unmatch
-       card.addEventListerner("click", cardOpen);
+   for (let card of cards){
+       card.addEventListerner("click", cardClicked); 
    }; 
 }
 
-function cardShow(){
+function cardClicked(){
 
 };
