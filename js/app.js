@@ -15,6 +15,9 @@ let star1 = document.getElementById("star1");
 let star2 = document.getElementById("star2");
 let star3 = document.getElementById("star3");
 
+let close= document.getElementById("closeModal");
+let popup = document.getElementById("winModal");
+
 document.body.onload = gameStart();
 
 // 洗牌函数来自于 http://stackoverflow.com/a/2450976
@@ -101,6 +104,9 @@ function cardMatch() {
             card1.classList.add("open", "match");
             card2.classList.add("open", "match");
             matched +=1;
+            if (matched===8){
+                win();
+            }
         }
         else{
             closeCards(card1);
@@ -158,3 +164,19 @@ function startTimer(){
         }
     }, 1000);
 }
+
+//descrip the win function when matched pic is 8.
+function win(){
+    let finalTime= timer.innerHTML;
+    let finalStar = document.querySelector(".stars").innerHTML;
+    //show win modal
+    popup.style.display = "block";
+    document.getElementById("finalMove").innerHTML = moves;
+    document.getElementById("finalStar").innerHTML = finalStar;
+    document.getElementById("finalTime").innerHTML = finalTime;
+    //close modal
+    close.onclick = function() {
+            popup.style.display = "none";
+        }
+    };
+
