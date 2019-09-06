@@ -17,6 +17,7 @@ let star3 = document.getElementById("star3");
 
 let close= document.getElementById("closeModal");
 let popup = document.getElementById("winModal");
+let again = document.getElementById("play-again");
 
 document.body.onload = gameStart();
 
@@ -176,7 +177,15 @@ function win(){
     document.getElementById("finalTime").innerHTML = finalTime;
     //close modal
     close.onclick = function() {
-            popup.style.display = "none";
-        }
+        popup.style.display = "none";
     };
+};
+
+function playAgain(){
+    again.onclick = function() {
+        popup.style.display = "none";
+    };
+    gameStart();
+}
+
 
