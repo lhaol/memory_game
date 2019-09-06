@@ -95,16 +95,15 @@ function cardMatch() {
         }
         else{
             closeCards(card1);
-            console.log("closeCard1");
             closeCards(card2);
-            console.log("closeCard2");
         }
         openCards = [];
-        console.log("clean openCards");
     }
 }
 
 function closeCards(card){
-    card.className="card";
-    card.addEventListener("click", cardClicked);
+    setTimeout(function(){
+        card.className="card";
+        card.addEventListener("click", cardClicked);
+    }, 1000);
 }
