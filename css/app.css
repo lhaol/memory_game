@@ -107,3 +107,27 @@ h1 {
     float: right;
     cursor: pointer;
 }
+
+@media screen and (min-width:1024px) {
+    .deck {
+        width:800px;
+        height:800px;
+    }
+
+    .deck .card {
+        width:160px;
+        height:160px;
+    }
+}
+
+@media screen and (max-width:1024px){
+    .deck {
+        width: 80%;
+        height: 80vw;
+    }
+
+    .deck .card {
+        width: 22%;
+        height: 15vw;
+    }
+}

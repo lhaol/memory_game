@@ -90,6 +90,7 @@ function cardListener(){
 
 function cardClicked(){
     this.classList.add("open", "show");
+    //add opened cards to openCards
     openCards.push(this);
     countMoves();
     this.removeEventListener("click", cardClicked);
@@ -130,7 +131,6 @@ function countMoves(){
     if (moves ==1){
         startTimer();
     }
-
     //update Star icon
     if (moves <= 20){
         score=3
@@ -179,7 +179,7 @@ function win(){
     close.onclick = function() {
         popup.style.display = "none";
     };
-};
+}
 
 function playAgain(){
     again.onclick = function() {
