@@ -48,13 +48,13 @@ function gameStart(){
 
     cardListener();
 
-
-    //add timer
-    //ranking star
-    //set moves
+    //reset moves
     moves = 0;
     count.innerHTML = moves;
 
+    //reset timer
+
+    //reset rating
 }
 
 
@@ -78,9 +78,6 @@ function cardListener(){
 function cardClicked(){
     this.classList.add("open", "show");
     openCards.push(this);
-    // if(moves===0){
-    //     timer = setInterval (timeit, 1000);
-    // }
     countMoves();
     this.removeEventListener("click", cardClicked);
     cardMatch(); 
@@ -120,6 +117,22 @@ function countMoves(){
 
 }
 
+//descrip timer for game
+let second = 0;
+let minute = 0;
+let hour = 0;
+let timer = document.querySelector(".timer");
 function startTimer(){
-    
+    setInterval(function(){
+        timer.innerHTML= hour +":" + minute + ":" +second;
+        second++;
+        if (second ==60){
+            minute++;
+            second=0;
+        }
+        if (minute ==60){
+            hour++;
+            minute =0;
+        }
+    }, 1000);
 }
