@@ -5,7 +5,10 @@ let cardList = document.getElementsByClassName("card");
 let cards = [...cardList];
 
 let deck = document.querySelector(".deck");
+
 let openCards = [];
+let moves = 0;
+let count = document.querySelector(".moves");
 
 document.body.onload = gameStart();
 
@@ -33,8 +36,6 @@ function shuffle(array) {
 
 function gameStart(){
     openCards = [];
-    moves = 0;
-    // time = 0;
     matched =0
     cards=shuffle(cards);
 
@@ -50,7 +51,9 @@ function gameStart(){
 
     //add timer
     //ranking star
-    //moves
+    //set moves
+    moves = 0;
+    count.innerHTML = moves;
 
 }
 
@@ -78,7 +81,7 @@ function cardClicked(){
     // if(moves===0){
     //     timer = setInterval (timeit, 1000);
     // }
-    moves+=1;
+    countMoves();
     this.removeEventListener("click", cardClicked);
     cardMatch(); 
 };
@@ -106,4 +109,17 @@ function closeCards(card){
         card.className="card";
         card.addEventListener("click", cardClicked);
     }, 1000);
+}
+
+function countMoves(){
+    moves++;
+    count.innerHTML=moves;
+    if (moves ==1){
+        startTimer();
+    }
+
+}
+
+function startTimer(){
+    
 }
