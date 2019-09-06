@@ -9,6 +9,7 @@ let deck = document.querySelector(".deck");
 let openCards = [];
 let moves = 0;
 let count = document.querySelector(".moves");
+let timer = document.querySelector(".timer");
 
 document.body.onload = gameStart();
 
@@ -53,6 +54,8 @@ function gameStart(){
     count.innerHTML = moves;
 
     //reset timer
+    let second=0, minute=0, hour=0;
+    timer.innerHTML = "00:00:00"
 
     //reset rating
 }
@@ -121,7 +124,6 @@ function countMoves(){
 let second = 0;
 let minute = 0;
 let hour = 0;
-let timer = document.querySelector(".timer");
 function startTimer(){
     setInterval(function(){
         timer.innerHTML= hour +":" + minute + ":" +second;
