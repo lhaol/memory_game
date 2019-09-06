@@ -5,6 +5,7 @@ let cardList = document.getElementsByClassName("card");
 let cards = [...cardList];
 
 let deck = document.querySelector(".deck");
+let openCards = [];
 
 document.body.onload = gameStart();
 
@@ -67,31 +68,43 @@ function gameStart(){
  */
 function cardListener(){
    for (let card of cards){
-       card.addEventListerner("click", cardClicked); 
+       card.addEventListener("click", cardClicked); 
    }; 
 }
 
 function cardClicked(){
-    this.classList.add('open', 'show');
+    this.classList.add("open", "show");
     openCards.push(this);
-    if(moves===0){
-        timer = setInterval (timeit, 1000);
-    }
+    // if(moves===0){
+    //     timer = setInterval (timeit, 1000);
+    // }
     moves+=1;
     this.removeEventListener("click", cardClicked);
-    cardMatch (); 
+    cardMatch(); 
 };
 
 function cardMatch() {
-    if (openCards.lengh === 2){
-        if (opencards[0].classList.toString() === openCards[1].classList.toString()){
-            openCrads[0].classList.add("open", "match")
-            openCrads[0].classList.add("open", "match")
+    let card1=openCards[0];
+    let card2=openCards[1];
+    let length= openCards.length;
+    if (length === 2){
+        if (card1.children[0].classList.toString() === card2.children[0].classList.toString()){
+            card1.classList.add("open", "match");
+            card2.classList.add("open", "match");
             matched +=1;
         }
         else{
-            closeCards();
+            closeCards(card1);
+            console.log("closeCard1");
+            closeCards(card2);
+            console.log("closeCard2");
         }
         openCards = [];
+        console.log("clean openCards");
     }
+}
+
+function closeCards(card){
+    card.className="card";
+    card.addEventListener("click", cardClicked);
 }
