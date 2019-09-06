@@ -11,6 +11,10 @@ let moves = 0;
 let count = document.querySelector(".moves");
 let timer = document.querySelector(".timer");
 
+let star1 = document.getElementById("star1");
+let star2 = document.getElementById("star2");
+let star3 = document.getElementById("star3");
+
 document.body.onload = gameStart();
 
 // 洗牌函数来自于 http://stackoverflow.com/a/2450976
@@ -55,9 +59,11 @@ function gameStart(){
 
     //reset timer
     let second=0, minute=0, hour=0;
-    timer.innerHTML = "00:00:00"
+    timer.innerHTML = "00:00:00";
 
     //reset rating
+    star2.className="fa fa-star";
+    star3.className="fa fa-star";
 }
 
 
@@ -118,6 +124,20 @@ function countMoves(){
         startTimer();
     }
 
+    //update Star icon
+    if (moves <= 20){
+        score=3
+    }
+    else if (moves<=26){
+        score=2
+        star3.classList.remove("fa-star");
+        star3.classList.add("fa-star-o");
+    }
+    else{
+        score=1
+        star2.classList.remove("fa-star");
+        star2.classList.add("fa-star-o");
+    }
 }
 
 //descrip timer for game
