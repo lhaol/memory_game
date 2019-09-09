@@ -19,6 +19,11 @@ let close= document.getElementById("closeModal");
 let popup = document.getElementById("winModal");
 let again = document.getElementById("play-again");
 
+let interval;
+let second = 0;
+let minute = 0;
+let hour = 0;
+
 document.body.onload = gameStart();
 
 // 洗牌函数来自于 http://stackoverflow.com/a/2450976
@@ -62,8 +67,11 @@ function gameStart(){
     count.innerHTML = moves;
 
     //reset timer
-    let second=0, minute=0, hour=0;
+    second=0;
+    minute=0;
+    hour=0;
     timer.innerHTML = "00:00:00";
+    clearInterval(interval);
 
     //reset rating
     star2.className="fa fa-star";
@@ -129,6 +137,9 @@ function countMoves(){
     moves++;
     count.innerHTML=moves;
     if (moves ==1){
+        second=0;
+        minute=0;
+        hour=0;
         startTimer();
     }
     //update Star icon
@@ -148,11 +159,8 @@ function countMoves(){
 }
 
 //descrip timer for game
-let second = 0;
-let minute = 0;
-let hour = 0;
 function startTimer(){
-    setInterval(function(){
+    interval = setInterval(function(){
         timer.innerHTML= hour +":" + minute + ":" +second;
         second++;
         if (second ==60){
@@ -168,6 +176,7 @@ function startTimer(){
 
 //descrip the win function when matched pic is 8.
 function win(){
+    clearInterval(interval);
     let finalTime= timer.innerHTML;
     let finalStar = document.querySelector(".stars").innerHTML;
     //show win modal
